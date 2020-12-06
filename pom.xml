@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- modelVersion 指定了 pom 文件的模型版本（Maven 3 必须是 4.0.0）-->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- parent 代表父项目相关信息 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.0</version>
+        <relativePath/>
+    </parent>
+
+    <!-- groupId 代表项目所在组信息 -->
+    <groupId>com.shuijing</groupId>
+    <!-- artifactId 代表项目在组内的唯一标识 -->
+    <artifactId>boot</artifactId>
+    <!-- version 代表项目版本 -->
+    <version>0.0.1-SNAPSHOT</version>
+    <!-- packaging 代表项目的打包类型，默认为 jar，可以省略，其他可选项：war、pom -->
+    <packaging>pom</packaging>
+    <!-- name 是项目的名称，给人看的，提升可读性 -->
+    <name>spring-boot-book</name>
+    <!-- description 是比 name 更进一步的项目描述 -->
+    <description>Demo project for Spring Boot</description>
+
+    <!-- properties 是用来放各种属性的，包括自定义属性 -->
+    <properties>
+        <!-- java.version 用来指定 JDK 的版本 -->
+        <java.version>1.8</java.version>
+    </properties>
+
+    <!-- dependencies 用来管理依赖的 Jar 包坐标信息，也是我们最常用的 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- build 用于配置项目的构建信息 -->
+    <build>
+        <!-- plugins 用于配置构建项目所需的插件 -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
