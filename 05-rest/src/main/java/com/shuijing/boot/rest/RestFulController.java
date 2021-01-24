@@ -17,13 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @blog https://liushuijinger.blog.csdn.net
  * @date 2020/12/19
  */
-@Api
 @RestController
+@Api(tags = "RESTful 接口")
 @RequestMapping("/rest")
 public class RestFulController {
 
-    @ApiOperation(value = "根据id获取用户信息")
+    @GetMapping("/swagger")
+    @ApiOperation(value = "Swagger 接口")
+    public String swagger() {
+        return "Swagger Method";
+    }
+
     @GetMapping("/user/{id}")
+    @ApiOperation(value = "根据id获取用户信息")
     public User get(@PathVariable @ApiParam("用户ID") int id) {
         // 演示代码，实际开发需要与数据库交互
         User user = new User();
