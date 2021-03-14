@@ -1,0 +1,26 @@
+spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  profiles:
+    active: jpa
+
+knife4j:
+  enable: true
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    root: info
+
+# WEB 配置
+server:
+  port: 8080
+  servlet:
+    context-path: /springboot
+    session:
+      timeout: 60
+
