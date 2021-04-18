@@ -1,4 +1,4 @@
-package com.shuijing.boot.persistence.jpa;
+package com.shuijing.boot.jpa;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;

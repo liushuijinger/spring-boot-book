@@ -1,4 +1,4 @@
-package com.shuijing.boot.persistence.jpa;
+package com.shuijing.boot.jpa;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
@@ -15,6 +15,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
 
     @Override
     public Optional<String> getCurrentAuditor() {
-        return Optional.of("管理员");
+        // 添加一个随机数
+        return Optional.of("管理员" + (int) (Math.random() * 10));
     }
 }

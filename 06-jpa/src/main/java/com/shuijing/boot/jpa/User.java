@@ -1,9 +1,10 @@
-package com.shuijing.boot.persistence.jpa;
+package com.shuijing.boot.jpa;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,6 +38,7 @@ public class User extends BaseEntity{
     @Column(nullable = false,length = 50)
     private String email;
 
+    @Convert
     private LocalDate birthDay;
 
 }

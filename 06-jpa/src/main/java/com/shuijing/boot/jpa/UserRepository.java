@@ -1,5 +1,7 @@
-package com.shuijing.boot.persistence.jpa;
+package com.shuijing.boot.jpa;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +18,8 @@ import java.util.List;
  */
 public interface UserRepository extends JpaRepository<User,Integer> {
     List<User> findByNameContaining(String name);
+
+    Page<User> findByNameContaining(String name, Pageable pageable);
 
     @Query("select u from User u where u.birthDay = ?1")
     List<User> findByBirthDay(LocalDate birthDay);

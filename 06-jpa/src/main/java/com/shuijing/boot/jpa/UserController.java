@@ -1,4 +1,4 @@
-package com.shuijing.boot.persistence.jpa;
+package com.shuijing.boot.jpa;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -58,24 +58,30 @@ public class UserController {
         return userRepository.findByBirthDayNative(birthDay);
     }
 
-    @ApiOperation(value = "获取用户列表")
+    @ApiOperation(value = "获取用户列表（分页）")
     @GetMapping
-    public Page<User> list(String property, @RequestParam(defaultValue = "asc") String direction,
-                           @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+    public Page<User> list(@RequestParam(defaultValue = "id") String property,
+                           @RequestParam(defaultValue = "ASC") Sort.Direction direction,
+                           @RequestParam(defaultValue = "0") Integer page,
+                           @RequestParam(defaultValue = "10") Integer size) {
 
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.fromString(direction), property);
+        Pageable pageable = PageRequest.of(page, size, direction, property);
 
         return userRepository.findAll(pageable);
     }
 
-//    @ApiOperation(value = "获取用户列表）支持模糊查询）")
-//    @GetMapping("/page/{name}")
-//    public Page<User> queryByName(@PathVariable String name, String direction, Integer page, Integer size) {
-//
-//        Pageable pageable = PageRequest.of(page, size);
-//
-//        return userRepository.findByNameContaining(name, pageable);
-//    }
+    @ApiOperation(value = "根据名字查询（分页）")
+    @GetMapping("/page/{name}")
+    public Page<User> queryByName(@PathVariable String name,
+                                  @RequestParam(defaultValue = "id") String property,
+                                  @RequestParam(defaultValue = "ASC") Sort.Direction direction,
+                                  @RequestParam(defaultValue = "0") Integer page,
+                                  @RequestParam(defaultValue = "10") Integer size) {
+
+        Pageable pageable = PageRequest.of(page, size, direction, property);
+
+        return userRepository.findByNameContaining(name, pageable);
+    }
 
     @ApiOperation(value = "创建用户")
     @PostMapping
