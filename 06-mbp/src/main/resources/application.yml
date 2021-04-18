@@ -30,7 +30,7 @@ spring:
         url-pattern: /*
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
         profile-enable: true
-      aop-patterns: com.shuijing.boot.persistence.controller.*,com.shuijing.boot.*.service.*,com.shuijing.boot.*.mapper.*
+      aop-patterns: com.shuijing.boot.*.controller.*,com.shuijing.boot.*.service.*,com.shuijing.boot.*.mapper.*
       filter:
         slf4j:
           enabled: true
@@ -38,8 +38,22 @@ spring:
 
 logging:
   level:
-    root: debug
+    root: info
     # 输出 SQL
     druid.sql.Statement: debug
     # 输出查询结果
     druid.sql.ResultSet: debug
+    com.shuijing.boot.mbp.mapper: debug
+
+# WEB 配置
+server:
+  port: 8080
+  servlet:
+    context-path: /springboot
+    session:
+      timeout: 60
+
+# 配置slq打印日志
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
