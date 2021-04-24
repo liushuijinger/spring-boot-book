@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      stat-view-servlet:
+        enabled: true
+        #        login-username: druid
+        #        login-password: 123456
+        reset-enable: true
+        url-pattern: "/druid/*"
+        # allow: 127.0.0.1
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      useGlobalDataSourceStat: true
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        profile-enable: true
+      aop-patterns: com.shuijing.boot.*.controller.*,com.shuijing.boot.*.service.*,com.shuijing.boot.*.mapper.*
+      filter:
+        slf4j:
+          enabled: true
+          statement-executable-sql-log-enable: true
+
+logging:
+  level:
+    root: debug
+    # 输出 SQL
+    druid.sql.Statement: debug
+    # 输出查询结果
+    druid.sql.ResultSet: debug
+    com.shuijing.boot.transaction.mapper: debug
+
+# WEB 配置
+server:
+  port: 8080
+  servlet:
+    context-path: /springboot
+    session:
+      timeout: 60
+
+# 配置slq打印日志
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
