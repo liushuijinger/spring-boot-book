@@ -1,30 +1,32 @@
 package com.shuijing.boot.transaction.service.impl;
 
 import com.shuijing.boot.transaction.entity.User;
+import com.shuijing.boot.transaction.service.TransactionService;
 import com.shuijing.boot.transaction.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 /**
  * @author 刘水镜
  * @blog https://liushuijinger.blog.csdn.net
- * @date 2021-04-24
+ * @date 2021-05-04
  */
 @Slf4j
-@SpringBootTest
-class UserServiceImplTest {
+@Service
+public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     private UserService userService;
 
+    @Override
+    public void clean() {
+        userService.remove(null);
+    }
 
-    // 都能插入
-    @Test
-    public void noTransaction_required_required() {
+    @Override
+    public void noTransaction_required_required_externalException() {
         User xiaoShui = new User().setName("小水");
         User xiaoJing = new User().setName("小镜");
         userService.addWithRequired(xiaoShui);
@@ -32,8 +34,7 @@ class UserServiceImplTest {
         throw new RuntimeException();
     }
 
-    // 小水插入，小镜未插入
-    @Test
+    @Override
     public void noTransaction_required_requiredException() {
         User xiaoShui = new User().setName("小水");
         User xiaoJing = new User().setName("小镜");
@@ -41,14 +42,9 @@ class UserServiceImplTest {
         userService.addWithRequiredAndException(xiaoJing);
     }
 
-
-
-
-
-    // 都未插入
-    @Test
+    @Override
     @Transactional
-    public void transaction_required_required() {
+    public void transaction_required_required_externalException() {
         User xiaoShui = new User().setName("小水");
         User xiaoJing = new User().setName("小镜");
         userService.addWithRequired(xiaoShui);
@@ -56,8 +52,7 @@ class UserServiceImplTest {
         throw new RuntimeException();
     }
 
-    // 都未插入
-    @Test
+    @Override
     @Transactional
     public void transaction_required_requiredException() {
         User xiaoShui = new User().setName("小水");
@@ -66,8 +61,8 @@ class UserServiceImplTest {
         userService.addWithRequiredAndException(xiaoJing);
     }
 
-    // 都未插入
-    @Test
+
+    @Override
     @Transactional
     public void transaction_required_requiredException_try() {
         User xiaoShui = new User().setName("小水");
@@ -80,13 +75,9 @@ class UserServiceImplTest {
         }
     }
 
-
-
-
-    // 小水未插入，小镜插入
-    @Test
+    @Override
     @Transactional
-    public void transaction_required_requiredNew() {
+    public void transaction_required_requiredNew_externalException() {
         User xiaoShui = new User().setName("小水");
         User xiaoJing = new User().setName("小镜");
         userService.addWithRequired(xiaoShui);
@@ -94,8 +85,7 @@ class UserServiceImplTest {
         throw new RuntimeException();
     }
 
-    // 小水未插入，小镜插入，水镜未插入
-    @Test
+    @Override
     @Transactional
     public void transaction_required_requiredNew_requiredNewException() {
         User xiaoShui = new User().setName("小水");
@@ -106,8 +96,7 @@ class UserServiceImplTest {
         userService.addWithRequiredNewAndException(shuiJing);
     }
 
-    // 小水未插入，小镜插入，水镜未插入
-    @Test
+    @Override
     @Transactional
     public void transaction_required_requiredNewException_try() {
         User xiaoShui = new User().setName("小水");
@@ -122,13 +111,9 @@ class UserServiceImplTest {
         }
     }
 
-
-
-
-    // 都未插入
-    @Test
+    @Override
     @Transactional
-    public void transaction_nested_nested() {
+    public void transaction_nested_nested_externalException() {
         User xiaoShui = new User().setName("小水");
         User xiaoJing = new User().setName("小镜");
         userService.addWithNested(xiaoShui);
@@ -136,8 +121,7 @@ class UserServiceImplTest {
         throw new RuntimeException();
     }
 
-    // 都未插入
-    @Test
+    @Override
     @Transactional
     public void transaction_nested_nestedException() {
         User xiaoShui = new User().setName("小水");
@@ -146,19 +130,18 @@ class UserServiceImplTest {
         userService.addWithNestedAndException(xiaoJing);
     }
 
-    // 都未插入
-    @Test
+    @Override
     @Transactional
     public void transaction_nested_nestedException_try() {
         User xiaoShui = new User().setName("小水");
         User xiaoJing = new User().setName("小镜");
         User shuiJing = new User().setName("水镜");
-        userService.addWithRequired(shuiJing);
-        userService.addWithNested(xiaoShui);
+        userService.addWithRequired(xiaoShui);
+        userService.addWithNested(xiaoJing);
         try {
-            userService.addWithNestedAndException(xiaoJing);
+            userService.addWithNestedAndException(shuiJing);
         } catch (Exception e) {
-            log.error("发生异常，事务回滚！");
+            log.error("发生异常，事务回滚！",e);
         }
     }
 }

@@ -38,7 +38,7 @@ spring:
 
 logging:
   level:
-    root: debug
+    root: trace
     # 输出 SQL
     druid.sql.Statement: debug
     # 输出查询结果
