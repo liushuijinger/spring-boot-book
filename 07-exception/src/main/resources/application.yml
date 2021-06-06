@@ -43,7 +43,6 @@ logging:
     druid.sql.Statement: debug
     # 输出查询结果
     druid.sql.ResultSet: debug
-    com.shuijing.boot.unittest.mapper: debug
 
 # WEB 配置
 server:
