@@ -1,4 +1,4 @@
-package com.shuijing.hello;
+package com.shuijing.boot.hello;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

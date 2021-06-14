@@ -1,4 +1,4 @@
-package com.shuijing.hello;
+package com.shuijing.boot.hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
