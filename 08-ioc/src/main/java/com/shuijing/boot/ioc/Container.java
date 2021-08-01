@@ -10,13 +10,13 @@ import java.util.Map;
  */
 public class Container {
 
-    private Map<Class<?>,Object> map = new HashMap<>();
+    private Map<Class<?>,Object> beans = new HashMap<>();
 
     public <T> T getBean(Class<T> key) {
-        return (T) map.get(key);
+        return (T) beans.get(key);
     }
 
     public <T> void put(Class<T> key, T value) {
-        map.put(key, value);
+        beans.put(key, value);
     }
 }
