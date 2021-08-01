@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -21,7 +22,7 @@ import java.util.Map;
  */
 @Slf4j
 @Aspect
-//@Component
+@Component
 public class WebAspect {
 
     @Pointcut("execution(public * com.shuijing.boot.aop.*.*(..))")
