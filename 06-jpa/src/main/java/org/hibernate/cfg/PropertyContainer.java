@@ -83,7 +83,7 @@ class PropertyContainer {
                 : defaultClassLevelAccessType;
         assert classLevelAccessType == AccessType.FIELD || classLevelAccessType == AccessType.PROPERTY;
 
-        this.persistentAttributeMap = new LinkedHashMap<String, XProperty>();
+        this.persistentAttributeMap = new LinkedHashMap<>();
 
         final List<XProperty> fields = xClass.getDeclaredProperties( AccessType.FIELD.getType() );
         final List<XProperty> getters = xClass.getDeclaredProperties( AccessType.PROPERTY.getType() );
@@ -232,6 +232,10 @@ class PropertyContainer {
     public Collection<XProperty> getProperties() {
         assertTypesAreResolvable();
         return Collections.unmodifiableCollection( persistentAttributeMap.values() );
+    }
+
+    public Iterable<XProperty> propertyIterator() {
+        return persistentAttributeMap.values();
     }
 
     private void assertTypesAreResolvable() {

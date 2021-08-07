@@ -2,6 +2,7 @@ package com.shuijing.boot.exception.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * @author 刘水镜
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  * @date 2021-05-30
  */
 @Slf4j
-//@RestControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
