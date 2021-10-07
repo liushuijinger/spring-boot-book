@@ -45,6 +45,36 @@ spring:
         max-active: 10
         max-idle: 10
         max-wait: 2000
+  # Quartz 相关配置
+  quartz:
+    # Job 持久化方式（数据库）
+    job-store-type: JDBC
+    # 每次启动初始化表结构
+    jdbc:
+      initialize-schema: always
+      # 指定数据库脚本
+      # schema: classpath:tables_mysql_innodb.sql
+    properties:
+      org:
+        quartz:
+          scheduler:
+            # 实例名
+            instanceName: quartzScheduler
+            # 实例 Id 策略
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            # 表前缀
+            tablePrefix: QRTZ_
+            isClustered: false
+            clusterCheckinInterval: 10000
+            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 logging:
   level:
     root: info

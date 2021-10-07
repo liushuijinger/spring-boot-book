@@ -2,7 +2,6 @@ package com.shuijing.boot.task.manager.task;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  */
 
 @Slf4j
-@Component
+//@Component
 public class TimeTask {
 
     private int[] people = {6, 2, 3, 1};
