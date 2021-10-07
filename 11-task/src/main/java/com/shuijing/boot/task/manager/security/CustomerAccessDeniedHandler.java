@@ -1,7 +1,7 @@
-package com.shuijing.boot.security.manager;
+package com.shuijing.boot.task.manager.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shuijing.boot.security.common.Result;
+import com.shuijing.boot.task.common.Result;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

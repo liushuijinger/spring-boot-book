@@ -1,12 +1,14 @@
-package com.shuijing.boot.security.manager;
+package com.shuijing.boot.task.manager.security;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shuijing.boot.security.common.Result;
+import com.shuijing.boot.task.common.Result;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -18,19 +20,19 @@ import java.nio.charset.StandardCharsets;
  * @date 2021-08-09
  */
 @Component
-public class CustomerAccessDeniedHandler implements AccessDeniedHandler {
-    @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response,
-                       AccessDeniedException accessDeniedException) throws IOException {
+public class CustomerAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                        Authentication authentication) throws IOException, ServletException {
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
 
         if (isAjaxRequest(request)) {
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.getWriter().write(new ObjectMapper().writeValueAsString(Result.error("没有权限！")));
+            response.getWriter().write(new ObjectMapper().writeValueAsString(Result.success()));
         } else {
             response.setContentType(MediaType.TEXT_HTML_VALUE);
-            response.sendRedirect(request.getContextPath() + "/nopermission.html");
+            super.onAuthenticationSuccess(request, response, authentication);
         }
     }
 

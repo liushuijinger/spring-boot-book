@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * @author liushuijing (shuijing@shanshu.ai)
+ * @author 刘水镜
+ * @blog https://liushuijinger.blog.csdn.net
  * @date 2021-08-09
  */
 @Component

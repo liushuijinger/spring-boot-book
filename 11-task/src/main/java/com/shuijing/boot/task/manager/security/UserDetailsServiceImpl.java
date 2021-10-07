@@ -1,8 +1,8 @@
-package com.shuijing.boot.security.manager;
+package com.shuijing.boot.task.manager.security;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.shuijing.boot.security.entity.SysUser;
-import com.shuijing.boot.security.service.SysUserService;
+import com.shuijing.boot.task.entity.SysUser;
+import com.shuijing.boot.task.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author 刘水镜
  * @blog https://liushuijinger.blog.csdn.net
- * @date 2021-08-09
+ * @date 2021-08-07
  */
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
