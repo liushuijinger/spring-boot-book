@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class WorkConsumer {
 
     @RabbitListener(containerFactory = "rabbitListenerContainerFactory", queuesToDeclare = @Queue("work"))
+//    @RabbitListener(queuesToDeclare = @Queue("work"))
     public void receiveOne(String message) {
         try {
             Thread.sleep(1000);
@@ -26,6 +27,7 @@ public class WorkConsumer {
 
 
     @RabbitListener(containerFactory = "rabbitListenerContainerFactory", queuesToDeclare = @Queue("work"))
+//    @RabbitListener(queuesToDeclare = @Queue("work"))
     public void receiveTwo(String message) {
         try {
             Thread.sleep(4000);

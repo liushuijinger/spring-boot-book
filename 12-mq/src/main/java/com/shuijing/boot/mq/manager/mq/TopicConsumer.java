@@ -22,7 +22,7 @@ public class TopicConsumer {
             exchange = @Exchange(name = "topic", type = "topic")
     ))
     public void receiveOne(String message) {
-        log.info("key: liu.shui.jing message：{}", message);
+        log.info("receiveOne message：{}", message);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -31,7 +31,7 @@ public class TopicConsumer {
             exchange = @Exchange(name = "topic", type = "topic")
     ))
     public void receiveTwo(String message) {
-        log.info("key: liu.shui.* message：{}", message);
+        log.info("receiveTwo message：{}", message);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -40,7 +40,7 @@ public class TopicConsumer {
             exchange = @Exchange(name = "topic", type = "topic")
     ))
     public void receiveThree(String message) {
-        log.info("key: liu.shui.# message：{}", message);
+        log.info("receiveThree message：{}", message);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -49,7 +49,7 @@ public class TopicConsumer {
             exchange = @Exchange(name = "topic", type = "topic")
     ))
     public void receiveFour(String message) {
-        log.info("key: liu.# message：{}", message);
+        log.info("receiveFour message：{}", message);
     }
 
 }

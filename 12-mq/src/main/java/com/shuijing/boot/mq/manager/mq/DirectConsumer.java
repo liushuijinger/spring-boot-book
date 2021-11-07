@@ -22,7 +22,7 @@ public class DirectConsumer {
             exchange = @Exchange(name = "direct", type = "direct")
     ))
     public void receiveOne(String message) {
-        log.info("key: liushuijing、shuijing message: {}", message);
+        log.info("receiveOne message: {}", message);
     }
 
     @RabbitListener(bindings = @QueueBinding(
@@ -31,7 +31,7 @@ public class DirectConsumer {
             exchange = @Exchange(name = "direct", type = "direct")
     ))
     public void receiveTwo(String message) {
-        log.info("key: liushuijing message: {}", message);
+        log.info("receiveTwo message: {}", message);
     }
 
 }
