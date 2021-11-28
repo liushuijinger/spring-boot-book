@@ -19,10 +19,10 @@ public class Article {
     @Id
     private Long id;
 
-    @Field(store = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word")
+    @Field(store = true, searchAnalyzer = "ik_smart", analyzer = "ik_smart")
     private String author;
 
-    @Field(store = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word")
+    @Field(store = true, searchAnalyzer = "ik_smart", analyzer = "ik_smart")
     private String title;
 
     @Field(store = true, searchAnalyzer = "ik_max_word", analyzer = "ik_max_word")

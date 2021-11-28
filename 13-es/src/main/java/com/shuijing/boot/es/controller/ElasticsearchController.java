@@ -6,11 +6,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.document.Document;
 import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.Query;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,8 +48,8 @@ public class ElasticsearchController {
 
     @PostMapping
     @ApiOperation("新增")
-    public Result<Article> create(@RequestBody Article article) {
-        return Result.success(elasticsearchRestTemplate.save(article));
+    public Result<Iterable<Article>> create(@RequestBody List<Article> articleList) {
+        return Result.success(elasticsearchRestTemplate.save(articleList));
     }
 
     @PutMapping
@@ -59,8 +62,10 @@ public class ElasticsearchController {
         params.put("title", title);
         params.put("content", content);
 
+        Document document = Document.from(params);
+
         UpdateQuery updateQuery = UpdateQuery.builder(id)
-                .withParams(params)
+                .withDocument(document)
                 .build();
 
         return Result.success(elasticsearchRestTemplate.update(updateQuery,IndexCoordinates.of("article")));
@@ -79,11 +84,27 @@ public class ElasticsearchController {
 
         Pageable pageable = PageRequest.of(0,10);  // page 从第 0 页开始
 
+        HighlightBuilder.Field highlightField = new HighlightBuilder.Field("title")
+                .preTags("<span>")
+                .postTags("</span>");
+
         Query query = new NativeSearchQueryBuilder()
                 .withQuery(QueryBuilders.multiMatchQuery(keyWord, "author","title","content"))
+                .withHighlightFields(highlightField)
                 .withPageable(pageable)
                 .build();
         SearchHits<Article> search = elasticsearchRestTemplate.search(query, Article.class);
         return Result.success(search);
+    }
+
+    @GetMapping("/count")
+    @ApiOperation("统计数量")
+    public Result<Long> count(String keyWord) {// page 从第 0 页开始
+
+        Query query = new NativeSearchQueryBuilder()
+                .withQuery(QueryBuilders.multiMatchQuery(keyWord, "author","title","content"))
+                .build();
+
+        return Result.success(elasticsearchRestTemplate.count(query, Article.class));
     }
 }
