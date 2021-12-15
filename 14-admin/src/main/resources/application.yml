@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /admin
+  port: 9090
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456

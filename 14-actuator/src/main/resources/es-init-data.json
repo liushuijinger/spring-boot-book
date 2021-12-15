@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "author": "小刘",
+    "title": "spring boot 集成 rabbitMQ",
+    "content": "世界上本没有 MQ，需要的人多了，便诞生了 MQ。"
+  },
+  {
+    "id": 2,
+    "author": "小水",
+    "title": "spring boot 集成 elasticsearch",
+    "content": "Elasticsearch 在速度和可扩展性方面都表现出色，而且还能够索引多种类型的内容，这意味着其可用于多种用例"
+  },
+  {
+    "id": 3,
+    "author": "小镜",
+    "title": "spring boot 集成 Redis",
+    "content": "Redis（全称：Remote Dictionary Server 远程字典服务）是一个开源的使用 ANSI C 语言编写、支持网络、基于内存并且可持久化的、Key-Value 数据库。"
+  },
+  {
+    "id": 4,
+    "author": "刘水镜",
+    "title": "spring boot 集成 Spring Security",
+    "content": "Spring Security 是一个标准的基于 Spring 的安全应用，具有安全认证和访问控制能力，功能强大且支持高度定制化的框架。"
+  }
+]
