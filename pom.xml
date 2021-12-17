@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.2</version>
+        <version>2.5.6</version>
         <relativePath/>
     </parent>
 
@@ -29,9 +29,28 @@
     <properties>
         <!-- java.version 用来指定 JDK 的版本 -->
         <java.version>1.8</java.version>
-        <boot.version>2.5.2</boot.version>
     </properties>
 
+    <modules>
+        <module>03-hello</module>
+        <module>04-mvc</module>
+        <module>05-rest</module>
+        <module>06-jpa</module>
+        <module>06-mbp</module>
+        <module>06-transaction</module>
+        <module>07-exception</module>
+        <module>07-log</module>
+        <module>07-unittest</module>
+        <module>08-aop</module>
+        <module>08-ioc</module>
+        <module>09-redis</module>
+        <module>10-security</module>
+        <module>11-task</module>
+        <module>12-mq</module>
+        <module>13-es</module>
+        <module>14-actuator</module>
+        <module>14-admin</module>
+    </modules>
     <!-- dependencies 用来管理依赖的 Jar 包坐标信息，也是我们最常用的 -->
     <dependencies>
         <dependency>
@@ -53,11 +72,11 @@
         </dependency>
 
         <!-- Swagger 依赖 -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-boot-starter</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
