@@ -79,6 +79,9 @@
 第十五章 分享了一些作者多年来关于技术学习的心得。
 
 <div align=center>
-<img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%85%AC%E4%BC%97%E5%8F%B7.jpg?raw=true" >
+<img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%85%AC%E4%BC%97%E5%8F%B7.jpg?raw=true">
+<img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/QQ%E7%BE%A4.png?raw=true" width="258">
+<img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%BE%AE%E5%8D%9A.jpg?raw=true" 
+width="258">
 </div>
 
