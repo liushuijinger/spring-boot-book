@@ -17,7 +17,7 @@
 
 <div align=center>
     <a href="https://item.jd.com/13724304.html">
-        <img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%B0%81%E9%9D%A2.jpg?raw=true" >
+        <img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%B0%81%E9%9D%A2.jpg?raw=true" width="450">
     </a>
 </div>
 <p align="center">
