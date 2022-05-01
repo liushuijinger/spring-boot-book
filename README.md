@@ -15,6 +15,17 @@
 [![公众号](https://img.shields.io/badge/公众号-做个开发者-07C160?logo=WeChat&lstyle=flat)](https://mp.weixin.qq.com/s/7Q9vb5R7chugkQ39kH6wqw)
 
 
+<div align=center>
+    <a href="https://item.jd.com/13724304.html">
+        <img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%B0%81%E9%9D%A2.jpg?raw=true" >
+    </a>
+</div>
+<p align="center">
+    <a href="https://item.jd.com/13724304.html">京东</a>
+    <a href="http://product.dangdang.com/29397296.html">当当</a>
+    <a href="https://detail.tmall.com/item.htm?id=673648646503">天猫</a>
+</p>
+
 ## 内容简介
 
 计算机里的世界是现实世界的映射，或者是基于现实世界的演化。技术都是为了解决生活中的问题而诞生的，可以说一切技术都来源于生活。因此，学好技术要从生活入手。本书始终秉持着「技术来源于生活，更要归于生活」的理念，让书中每一项技术都有生活中原型与之对应。用非常接地气的方式让读者更容易理解书中所讲述的技术。
@@ -66,3 +77,8 @@
 第十四章 介绍了 Spring Boot 的监控组件 Actuator，并演示了如何与 Spring Boot Admin 整合使用。
 
 第十五章 分享了一些作者多年来关于技术学习的心得。
+
+<div align=center>
+<img src="https://github.com/liushuijinger/spring-boot-book/blob/master/static/%E5%85%AC%E4%BC%97%E5%8F%B7.jpg?raw=true" >
+</div>
+
